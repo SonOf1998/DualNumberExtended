@@ -18,13 +18,13 @@ struct DualNumber
 inline constexpr DualNumber X(double x) { return DualNumber(x, 1); }
 
 // cmath functions arent constexpr
-inline DualNumber Sin   (DualNumber innerFunction)             { return DualNumber(sin(innerFunction.f), cos(innerFunction.f) * innerFunction.d); }
-inline DualNumber Sinh  (DualNumber innerFunction)             { return DualNumber(sinh(innerFunction.f), cosh(innerFunction.f) * innerFunction.d);}
-inline DualNumber Cos   (DualNumber innerFunction)             { return DualNumber(cos(innerFunction.f), -sin(innerFunction.f) * innerFunction.d); }
-inline DualNumber Cosh  (DualNumber innerFunction)             { return DualNumber(cosh(innerFunction.f), sinh(innerFunction.f) * innerFunction.d);}
-inline DualNumber Tan   (DualNumber innerFunction)             { return Sin(innerFunction) / Cos(innerFunction); }
-inline DualNumber Tanh  (DualNumber innerFunction)             { return Sinh(innerFunction) / Cosh(innerFunction); }
-inline DualNumber Log   (DualNumber innerFunction)             { return DualNumber(log(innerFunction.f), 1 / innerFunction.f * innerFunction.d); }
-inline DualNumber Exp   (DualNumber innerFunction)             { return DualNumber(exp(innerFunction.f), exp(innerFunction.f) * innerFunction.d); }
-inline DualNumber Pow   (DualNumber innerFunction, double n)   { return DualNumber(pow(innerFunction.f, n), n * pow(innerFunction.f, n - 1) * innerFunction.d); }
-inline DualNumber Sqrt  (DualNumber innerFunction)             { return  Pow(innerFunction, 0.5); }
+inline DualNumber Sin   (const DualNumber& innerFunction)             { return DualNumber(sin(innerFunction.f), cos(innerFunction.f) * innerFunction.d); }
+inline DualNumber Sinh  (const DualNumber& innerFunction)             { return DualNumber(sinh(innerFunction.f), cosh(innerFunction.f) * innerFunction.d);}
+inline DualNumber Cos   (const DualNumber& innerFunction)             { return DualNumber(cos(innerFunction.f), -sin(innerFunction.f) * innerFunction.d); }
+inline DualNumber Cosh  (const DualNumber& innerFunction)             { return DualNumber(cosh(innerFunction.f), sinh(innerFunction.f) * innerFunction.d);}
+inline DualNumber Tan   (const DualNumber& innerFunction)             { return Sin(innerFunction) / Cos(innerFunction); }
+inline DualNumber Tanh  (const DualNumber& innerFunction)             { return Sinh(innerFunction) / Cosh(innerFunction); }
+inline DualNumber Log   (const DualNumber& innerFunction)             { return DualNumber(log(innerFunction.f), 1 / innerFunction.f * innerFunction.d); }
+inline DualNumber Exp   (const DualNumber& innerFunction)             { return DualNumber(exp(innerFunction.f), exp(innerFunction.f) * innerFunction.d); }
+inline DualNumber Pow   (const DualNumber& innerFunction, double n)   { return DualNumber(pow(innerFunction.f, n), n * pow(innerFunction.f, n - 1) * innerFunction.d); }
+inline DualNumber Sqrt  (const DualNumber& innerFunction)             { return  Pow(innerFunction, 0.5); }
